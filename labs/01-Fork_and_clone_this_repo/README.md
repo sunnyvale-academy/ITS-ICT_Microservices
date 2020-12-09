@@ -8,7 +8,7 @@
 
 Open your browser and go to: https://github.com/sunnyvale-academy/ITS-ICT_Microservices
 
-The ITS-ICT_Microservices repo home page opens:
+The ITS-ICT_Microservices repo home page opens.
 
 Click on **Fork** button at the top-right of the screen. GitHub asks you to authenticate.
 
