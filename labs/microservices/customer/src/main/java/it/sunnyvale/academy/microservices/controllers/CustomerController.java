@@ -3,14 +3,22 @@ package it.sunnyvale.academy.microservices.controllers;
 import it.sunnyvale.academy.microservices.exceptions.CustomerNotFoundException;
 import it.sunnyvale.academy.microservices.model.Customer;
 import it.sunnyvale.academy.microservices.repos.CustomerRepository;
+import it.sunnyvale.academy.microservices.services.TraceService;
+import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.XSlf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @RestController
+@Slf4j
 @RequestMapping(value = "/customers")
 public class CustomerController {
+
+    @Autowired
+    TraceService traceService;
 
     @Autowired
     private final CustomerRepository customerRepository;
@@ -19,11 +27,14 @@ public class CustomerController {
         this.customerRepository = customerRepository;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    // CREATE
+    @RequestMapping(method = RequestMethod.PUT)
     public Customer addNewCustomer(@RequestBody Customer customer) {
         return customerRepository.save(customer);
     }
 
+
+    // READ
     @RequestMapping(value = "/{customerId}", method = RequestMethod.GET)
     public Customer getCustomer(@PathVariable String customerId) {
         Optional<Customer> customerOptional = customerRepository.findById(customerId);
@@ -32,5 +43,30 @@ public class CustomerController {
         }else{
             throw new CustomerNotFoundException();
         }
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public Collection<Customer> getAllCustomers() {
+        log.info("Get all customers");
+        return customerRepository.findAll();
+    }
+
+
+    // UPDATE
+    @RequestMapping(value = "/{customerId}", method = RequestMethod.POST)
+    public Customer modifyCustomer(@RequestBody Customer customer, @RequestBody String customerId ) {
+        return customerRepository.save(customer);
+    }
+
+
+    // DELETE
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void deleteAllCustomers() {
+        customerRepository.deleteAll();
+    }
+
+    @RequestMapping(value = "/{customerId}", method = RequestMethod.DELETE)
+    public void deleteAllCustomers(@PathVariable String customerId) {
+        customerRepository.deleteById(customerId);
     }
 }
