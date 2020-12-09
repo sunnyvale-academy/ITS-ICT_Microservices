@@ -1,9 +1,9 @@
 package it.sunnyvale.academy.microservices.config;
 
 import io.swagger.annotations.Contact;
+import lombok.extern.slf4j.XSlf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -19,11 +19,12 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors
-                        .basePackage("it.sunnyvale.academy.microservices.controller"))
+
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
-                .build().apiInfo(apiEndPointsInfo());
+                .build();
     }
 
     private ApiInfo apiEndPointsInfo() {

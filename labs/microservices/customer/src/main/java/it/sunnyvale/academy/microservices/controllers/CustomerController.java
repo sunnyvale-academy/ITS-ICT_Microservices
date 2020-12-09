@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @RestController
 @Slf4j
-@RequestMapping(value = "/customers")
+@RequestMapping(value = "/v2/customers")
 public class CustomerController {
 
     @Autowired
@@ -66,7 +66,7 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/{customerId}", method = RequestMethod.DELETE)
-    public void deleteAllCustomers(@PathVariable String customerId) {
+    public void deleteCustomer(@PathVariable String customerId) {
         customerRepository.deleteById(customerId);
     }
 }
