@@ -2,11 +2,11 @@
 
 ## Labs
 
-- [00 - Prerequities](00-Prerequisites/README.md)
+- [00 - Prerequities](labs/00-Prerequisites/README.md)
 
 - [01 - Fork and clone this repo](labs/01-Fork_and_clone_this_repo/README.md)
 
-- [02 - eCommerce microservices](02-eCommerce_microservices/README.md)
+- [02 - eCommerce microservices](labs/02-eCommerce_microservices/README.md)
 
 ## Assignments
 
