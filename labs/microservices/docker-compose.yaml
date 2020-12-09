@@ -1,11 +1,11 @@
 version: "3.7"
 services:
-  customer-ms:
-    build:
-      context: ./customer
-    container_name: customer-ms
-    ports:
-      - "8080:8080"
+#  customer-ms:
+#    build:
+#      context: ./customer
+#    container_name: customer-ms
+#    ports:
+#      - "8102:8102"
   mongodb_db:
     image: mongo:latest
     container_name: customer-mongodb
