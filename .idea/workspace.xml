@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d5b968e7-ccc8-4ca4-86c2-44361691c28b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/customer.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/pom_orig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/src/main/java/it/sunnyvale/academy/microservices/CustomerApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/src/main/java/it/sunnyvale/academy/microservices/config/SwaggerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/src/main/java/it/sunnyvale/academy/microservices/controllers/CustomerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/src/main/java/it/sunnyvale/academy/microservices/exceptions/CustomerNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/src/main/java/it/sunnyvale/academy/microservices/model/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/src/main/java/it/sunnyvale/academy/microservices/repos/CustomerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/src/main/java/it/sunnyvale/academy/microservices/services/TraceService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/customer/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/docker-compose.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs/microservices/start.sh" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1lQlrJOtPoZxDEdMP0zXSyx0DEm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d5b968e7-ccc8-4ca4-86c2-44361691c28b" name="Default Changelist" comment="" />
+      <created>1607537393545</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607537393545</updated>
+    </task>
+    <servers />
+  </component>
+</project>
