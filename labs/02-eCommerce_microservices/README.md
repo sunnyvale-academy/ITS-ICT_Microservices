@@ -11,7 +11,7 @@
 For example
 
 ```
-$ cat /etc/hosts
+$ cat /etc/hosts | grep 127.0.0.1
 127.0.0.1       localhost customer-mongodb
 ```
 
