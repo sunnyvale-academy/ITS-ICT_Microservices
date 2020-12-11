@@ -110,6 +110,29 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <!--<argument></argument>-->
+                        <!-- Classpath -->
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <!-- Main class -->
+                        <argument>it.sunnyvale.academy.microservices.CustomerApplication</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
