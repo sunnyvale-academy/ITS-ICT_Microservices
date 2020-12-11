@@ -5,8 +5,15 @@
 ## Prerequisites
 
 - Having completed lab [00 - Prerequisites](../00-Prerequisites/README.md)
-- The following hostnames must resolve to 127.0.0.1 (add them in /etc/hosts file accordingly)
+- The following host names must resolve to 127.0.0.1 (add them in /etc/hosts file accordingly)
     - customer-mongodb
+
+For example
+
+```
+$ cat /etc/hosts
+127.0.0.1       localhost customer-mongodb
+```
 
 
 To compile the classes, start microservices and DBs
