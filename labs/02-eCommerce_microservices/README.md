@@ -6,13 +6,6 @@
 
 - Having completed lab [00 - Prerequisites](../00-Prerequisites/README.md)
 
-For example
-
-```
-$ cat /etc/hosts | grep 127.0.0.1
-127.0.0.1       localhost customer-mongodb
-```
-
 ## Run Microservices
 
 To compile the classes, start microservices and DBs
