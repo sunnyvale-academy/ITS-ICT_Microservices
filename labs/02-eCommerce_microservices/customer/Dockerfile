@@ -1,5 +1,13 @@
+FROM maven:3.6.3-jdk-11-openj9 as builder
+ADD ./src/ /app/src/
+ADD ./pom.xml /app/pom.xml
+WORKDIR /app
+RUN mvn --batch-mode package
+
 FROM openjdk:8-jdk-alpine
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
+WORKDIR /app
+COPY --from=builder /app/target/*.jar app.jar
 EXPOSE 8102
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
+
+

@@ -6,6 +6,8 @@ services:
     container_name: customer-ms
     ports:
       - "8102:8102"
+    depends_on:
+      - mongodb_db
   mongodb_db:
     image: mongo:latest
     container_name: customer-mongodb
