@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37e4c056-6ce5-45bf-865a-fa6086ef6fab" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_1_13_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/sunnyvale/academy/microservices/exceptions/ExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/customer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/sunnyvale/academy/microservices/controllers/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/sunnyvale/academy/microservices/controllers/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/sunnyvale/academy/microservices/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/sunnyvale/academy/microservices/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/sunnyvale/academy/microservices/exceptions/ExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/sunnyvale/academy/microservices/exceptions/MyExceptionHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +122,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/sunnyvale/academy/microservices/exceptions/ExceptionHandler.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/it/sunnyvale/academy/microservices/exceptions/MyExceptionHandler.java</url>
           <line>16</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
