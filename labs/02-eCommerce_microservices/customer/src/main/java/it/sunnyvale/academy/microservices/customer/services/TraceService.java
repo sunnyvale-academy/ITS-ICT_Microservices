@@ -1,4 +1,4 @@
-package it.sunnyvale.academy.microservices.services;
+package it.sunnyvale.academy.microservices.customer.services;
 
 import brave.Span;
 import brave.Tracer;

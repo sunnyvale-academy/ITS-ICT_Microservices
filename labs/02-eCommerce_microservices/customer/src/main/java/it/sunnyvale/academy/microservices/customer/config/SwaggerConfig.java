@@ -1,4 +1,4 @@
-package it.sunnyvale.academy.microservices.config;
+package it.sunnyvale.academy.microservices.customer.config;
 
 import io.swagger.annotations.Contact;
 import lombok.extern.slf4j.XSlf4j;

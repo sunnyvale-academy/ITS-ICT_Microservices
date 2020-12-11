@@ -135,7 +135,7 @@
                         <argument>-classpath</argument>
                         <classpath/>
                         <!-- Main class -->
-                        <argument>it.sunnyvale.academy.microservices.CustomerApplication</argument>
+                        <argument>it.sunnyvale.academy.microservices.customer.CustomerApplication</argument>
                     </arguments>
                 </configuration>
             </plugin>

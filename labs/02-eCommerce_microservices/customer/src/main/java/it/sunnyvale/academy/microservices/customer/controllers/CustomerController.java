@@ -1,13 +1,11 @@
-package it.sunnyvale.academy.microservices.controllers;
+package it.sunnyvale.academy.microservices.customer.controllers;
 
-import it.sunnyvale.academy.microservices.exceptions.CustomerNotFoundException;
-import it.sunnyvale.academy.microservices.model.Customer;
-import it.sunnyvale.academy.microservices.repos.CustomerRepository;
-import it.sunnyvale.academy.microservices.services.TraceService;
+import it.sunnyvale.academy.microservices.customer.model.Customer;
+import it.sunnyvale.academy.microservices.customer.repos.CustomerRepository;
+import it.sunnyvale.academy.microservices.customer.services.TraceService;
+import it.sunnyvale.academy.microservices.customer.exceptions.CustomerNotFoundException;
 import lombok.extern.slf4j.Slf4j;
-import lombok.extern.slf4j.XSlf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

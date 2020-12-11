@@ -1,4 +1,4 @@
-package it.sunnyvale.academy.microservices;
+package it.sunnyvale.academy.microservices.customer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

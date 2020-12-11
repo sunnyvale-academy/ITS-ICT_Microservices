@@ -1,4 +1,4 @@
-package it.sunnyvale.academy.microservices.model;
+package it.sunnyvale.academy.microservices.customer.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

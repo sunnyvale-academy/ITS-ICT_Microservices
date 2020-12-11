@@ -1,4 +1,4 @@
-package it.sunnyvale.academy.microservices.exceptions;
+package it.sunnyvale.academy.microservices.customer.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;

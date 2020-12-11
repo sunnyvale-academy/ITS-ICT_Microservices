@@ -1,6 +1,6 @@
-package it.sunnyvale.academy.microservices.repos;
+package it.sunnyvale.academy.microservices.customer.repos;
 
-import it.sunnyvale.academy.microservices.model.Customer;
+import it.sunnyvale.academy.microservices.customer.model.Customer;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
