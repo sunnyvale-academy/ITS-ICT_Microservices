@@ -5,8 +5,6 @@
 ## Prerequisites
 
 - Having completed lab [00 - Prerequisites](../00-Prerequisites/README.md)
-- The following host names must resolve to **127.0.0.1** (add them in `/etc/hosts` file accordingly)
-    - customer-mongodb
 
 For example
 
