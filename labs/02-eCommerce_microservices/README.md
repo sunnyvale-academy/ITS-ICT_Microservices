@@ -15,6 +15,7 @@ $ cat /etc/hosts | grep 127.0.0.1
 127.0.0.1       localhost customer-mongodb
 ```
 
+## Run Microservices
 
 To compile the classes, start microservices and DBs
 
@@ -22,7 +23,7 @@ To compile the classes, start microservices and DBs
 $ ./start.sh
 ```
 
-## Customer Microservice
+## Customer Microservice details
 
 Open API url [http://localhost:8102/customers-service/v2/api-docs](http://localhost:8102/customers-service/v2/api-docs)
 
