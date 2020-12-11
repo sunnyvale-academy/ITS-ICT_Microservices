@@ -7,8 +7,10 @@ import it.sunnyvale.academy.microservices.services.TraceService;
 import lombok.extern.slf4j.Slf4j;
 import lombok.extern.slf4j.XSlf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -29,7 +31,7 @@ public class CustomerController {
 
     // CREATE
     @RequestMapping(method = RequestMethod.PUT)
-    public Customer addNewCustomer(@RequestBody Customer customer) {
+    public Customer addNewCustomer(@Valid @RequestBody Customer customer) {
         return customerRepository.save(customer);
     }
 
