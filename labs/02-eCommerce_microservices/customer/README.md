@@ -1,5 +1,7 @@
 # Customers Microservice
 
+![](img/customer-ms.png)
+
 ## Run microservice
 
 Before running the microservice, the following prerequisites must be met:
