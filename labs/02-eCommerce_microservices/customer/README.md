@@ -2,7 +2,7 @@
 
 ![](img/customer-ms.png)
 
-## Run microservice
+## Prerequisites
 
 Before running the microservice, the following prerequisites must be met:
 - Having **Maven** and **Java** (8+) installed 
@@ -13,6 +13,8 @@ Before running the microservice, the following prerequisites must be met:
 $ cat /etc/hosts | grep 127.0.0.1
 127.0.0.1       localhost customer-mongodb
 ```
+
+## Run microservice
 
 ```console
 $ mvn exec:exec
