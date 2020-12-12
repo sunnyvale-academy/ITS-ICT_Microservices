@@ -49,6 +49,14 @@ services:
   #
   # Notification
   #
+  notification-ms:
+    build:
+      context: ./notification
+    container_name: notification-ms
+    ports:
+      - "8104:8104"
+    depends_on:
+      - kafka
   zookeeper:
     image: confluent/zookeeper
     container_name: zookeeper
@@ -56,7 +64,6 @@ services:
       - "2181:2181"
     environment:
       zk_id: "1"
-
   kafka:
     image: confluent/kafka
     container_name: kafka
