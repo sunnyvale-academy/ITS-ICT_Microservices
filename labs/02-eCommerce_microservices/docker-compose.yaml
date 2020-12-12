@@ -46,6 +46,27 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
+  #
+  # Notification
+  #
+  zookeeper:
+    image: confluent/zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      zk_id: "1"
+
+  kafka:
+    image: confluent/kafka
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
+
 volumes:
  mongodb_data: {}
  postgres_data: {}
