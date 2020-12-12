@@ -19,3 +19,9 @@ $ ./start.sh
 Open API url [http://localhost:8102/customers-service/v2/api-docs](http://localhost:8102/customers-service/v2/api-docs)
 
 Microservice base url: [http://localhost:8102/customers-service](http://localhost:8102/customers-service)
+
+## Order Microservice details
+
+Open API url [http://localhost:8103/orders-service/v2/api-docs](http://localhost:8103/orders-service/v2/api-docs)
+
+Microservice base url: [http://localhost:8103/orders-service](http://localhost:8103/orders-service)

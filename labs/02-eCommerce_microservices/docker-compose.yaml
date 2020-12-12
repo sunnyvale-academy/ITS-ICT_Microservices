@@ -1,5 +1,8 @@
 version: "3.7"
 services:
+  #
+  # Customer Microservice
+  # 
   customer-ms:
     build:
       context: ./customer
@@ -19,5 +22,30 @@ services:
       - 27017:27017
     volumes:
       - mongodb_data:/data/db
+  #
+  # Order Microservice
+  #
+  order-ms:
+    build:
+      context: ./order
+    container_name: order-ms
+    ports:
+      - "8103:8103"
+    depends_on:
+      - postgres_db
+  postgres_db:
+    image: postgres:latest
+    container_name: order-postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./order/dbinit.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
 volumes:
- mongodb_data:
+ mongodb_data: {}
+ postgres_data: {}
