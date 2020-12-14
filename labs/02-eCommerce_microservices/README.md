@@ -6,7 +6,7 @@
 
 - Having completed lab [00 - Prerequisites](../00-Prerequisites/README.md)
 
-## Run Microservices
+## Run microservices containers + infrastructure containers (MongoDB, Zookeeper, Kafka, Postgres)
 
 To compile the classes, start microservices and DBs
 
