@@ -14,6 +14,13 @@ To compile the classes, start microservices and DBs
 $ ./start.sh
 ```
 
+## Run ONLY infrastructure containers (MongoDB, Zookeeper, Kafka, Postgres)
+
+```console
+$ ./start-infra.sh
+```
+
+
 ## Customer Microservice details
 
 Open API url [http://localhost:8102/customers-service/v2/api-docs](http://localhost:8102/customers-service/v2/api-docs)

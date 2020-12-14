@@ -2,10 +2,12 @@ package it.sunnyvale.academy.microservices.order.controllers;
 
 import it.sunnyvale.academy.microservices.order.model.Order;
 import it.sunnyvale.academy.microservices.order.repos.OrderRepository;
+import it.sunnyvale.academy.microservices.order.services.NotificationClient;
 import it.sunnyvale.academy.microservices.order.services.TraceService;
 import it.sunnyvale.academy.microservices.order.exceptions.OrderNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -20,6 +22,12 @@ public class OrderController {
     TraceService traceService;
 
     @Autowired
+    NotificationClient notificationClient;
+
+    @Value("${kafka.sms.message}")
+    private String message;
+
+    @Autowired
     private final OrderRepository orderRepository;
 
     public OrderController(OrderRepository orderRepository) {
@@ -29,6 +37,7 @@ public class OrderController {
     // CREATE
     @RequestMapping(method = RequestMethod.PUT)
     public Order addNewOrder(@Valid @RequestBody Order order) {
+        notificationClient.sendSMS(message);
         return orderRepository.save(order);
     }
 

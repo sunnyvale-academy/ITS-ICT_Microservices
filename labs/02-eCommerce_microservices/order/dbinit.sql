@@ -6,7 +6,8 @@ SET TIMEZONE TO 'Europe/Rome';
 CREATE TABLE "orders"
 (
     order_id integer,
-    customer_id character varying
+    customer_id character varying,
+    notify_to_phone_nr character varying
 ) TABLESPACE pg_default;
 
 ALTER TABLE "orders"
