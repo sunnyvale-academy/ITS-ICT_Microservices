@@ -10,4 +10,6 @@ public class Order {
 
     private String customerId;
 
+    private String notifyToPhoneNr;
+
 }
