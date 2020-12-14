@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class Router extends RouteBuilder {
 
+    @Override
     public void configure() throws Exception {
 
         // Kafka Consumer
