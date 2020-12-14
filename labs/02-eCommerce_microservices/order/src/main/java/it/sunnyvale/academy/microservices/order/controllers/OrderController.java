@@ -37,7 +37,7 @@ public class OrderController {
     // CREATE
     @RequestMapping(method = RequestMethod.PUT)
     public Order addNewOrder(@Valid @RequestBody Order order) {
-        notificationClient.sendSMS(message);
+        notificationClient.sendSMS(order);
         return orderRepository.save(order);
     }
 
