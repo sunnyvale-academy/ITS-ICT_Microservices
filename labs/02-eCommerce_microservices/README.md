@@ -8,13 +8,15 @@
 
 ## Run microservices containers + infrastructure containers (MongoDB, Zookeeper, Kafka, Postgres)
 
-To compile the classes, start microservices and DBs
+To compile the classes, start microservices and infrastructure containers
 
 ```console
 $ ./start.sh
 ```
 
 ## Run ONLY infrastructure containers (MongoDB, Zookeeper, Kafka, Postgres)
+
+To run ONLY infrastructure containers (MongoDB, Zookeeper, Kafka, Postgres)
 
 ```console
 $ ./start-infra.sh
