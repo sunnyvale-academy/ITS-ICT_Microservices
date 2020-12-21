@@ -7,5 +7,6 @@ The following softwares have to be installed on your PC
 - Bash command line (Git bash, Moba or Cygwin if you are on Windows)
 - Visual Studio Code [download here](https://code.visualstudio.com)
 - IntelliJ IDEA Community Edition [download here](https://www.jetbrains.com/idea/download/)
+- Postman [download here](https://www.postman.com/downloads/)
 - A GitHub account
 - A DockerHUB account

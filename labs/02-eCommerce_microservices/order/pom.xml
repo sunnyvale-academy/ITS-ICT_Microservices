@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>it.sunnyvale.academy.microservices</groupId>
-    <artifactId>customer</artifactId>
+    <artifactId>order</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <parent>
@@ -23,10 +23,17 @@
 
     <dependencies>
 
-        <!-- Spring Boot Starter MongoDB -->
+        <!-- Postgres -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Spring Boot Data JPA Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
         <!-- Spring Boot Starter -->
@@ -107,6 +114,11 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
+        <!-- Spring for Kafka -->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
 
     </dependencies>
 
@@ -135,7 +147,7 @@
                         <argument>-classpath</argument>
                         <classpath/>
                         <!-- Main class -->
-                        <argument>it.sunnyvale.academy.microservices.customer.CustomerApplication</argument>
+                        <argument>it.sunnyvale.academy.microservices.order.OrderApplication</argument>
                     </arguments>
                 </configuration>
             </plugin>

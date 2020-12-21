@@ -10,6 +10,10 @@
 
 ## Assignments
 
+- [01 - Library application](assignments/01-Library_application/README.md)
+
+
+
 ## Appendinces
 
 [A - Sync a local copy of forked repo](appendices/A-Sync_copy_of_forked_repo/README.md)
