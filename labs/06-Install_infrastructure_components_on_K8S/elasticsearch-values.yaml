@@ -26,3 +26,14 @@ volumeClaimTemplate:
       storage: 100M
 
 fullnameOverride: elasticsearch
+
+# Allows you to add any config files in /usr/share/elasticsearch/config/
+# such as elasticsearch.yml and log4j2.properties
+esConfig: 
+  elasticsearch.yml: |
+    cluster.name: "docker-cluster"
+    network.host: 0.0.0.0
+    xpack.license.self_generated.type: trial
+    xpack.security.enabled: true
+    xpack.monitoring.collection.enabled: true
+  
