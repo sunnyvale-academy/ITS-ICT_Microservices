@@ -14,6 +14,10 @@
 
 - [05 - Microservices design patterns](labs/05-Microservices_design_patterns/README.md)
 
+- [06 - Install infrastructure components on K8S](labs/06-Install_infrastructure_components_on_K8S/README.md)
+
+- [07 - Deploy microservices on K8S](labs/07-Deploy_microservices_on_K8S/README.md)
+
 ## Assignments
 
 - [01 - Library application](assignments/01-Library_application/README.md)

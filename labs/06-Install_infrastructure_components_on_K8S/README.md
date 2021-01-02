@@ -93,6 +93,27 @@ NAME                  READY   STATUS    RESTARTS   AGE
 logstash-logstash-0   0/1     Running   0          41s
 ```
 
+Install Filebeat as a DaemonSet
+
+```console
+$ helm install --values filebeat-values.yaml filebeat elastic/filebeat
+NAME: filebeat
+LAST DEPLOYED: Sat Jan  2 12:43:53 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+...
+```
+
+To check if Logstash has been started correctly (it may take a while to get Running and Ready):
+
+```console
+$ kubectl get pods --namespace=default -l app=filebeat
+NAME                  READY   STATUS    RESTARTS   AGE
+logstash-logstash-0   0/1     Running   0          41s
+```
+
 
 ## Deploy MongoDB infrastructure
 

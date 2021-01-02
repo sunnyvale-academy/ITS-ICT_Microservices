@@ -1,0 +1,30 @@
+---
+fullnameOverride: filebeat
+
+deployment:
+  enabled: false
+
+daemonset:
+  enabled: true
+
+filebeatConfig:
+  filebeat.yml: |
+    filebeat.autodiscover:
+      providers:
+        - type: kubernetes
+          hints.enabled: true
+    #================================ Processors ===================================
+    processors:
+      - add_cloud_metadata: ~
+      - add_kubernetes_metadata:
+      - add_locale:
+          format: offset
+      - add_host_metadata:
+          netinfo.enabled: true
+    #================================ Output ===================================
+    # setup filebeat to send output to logstash
+    output:
+      logstash:  
+        enabled: true  
+        hosts:   
+            - logstash:5044
