@@ -8,6 +8,12 @@
 
 - [02 - eCommerce microservices](labs/02-eCommerce_microservices/README.md)
 
+- [03 - Testing microservices](labs/03-Testing_microservices/README.md)
+
+- [04 - Logging and tracing](labs/04-Logging_and_tracing/README.md)
+
+- [05 - Microservices design patterns](labs/05-Microservices_design_patterns/README.md)
+
 ## Assignments
 
 - [01 - Library application](assignments/01-Library_application/README.md)
