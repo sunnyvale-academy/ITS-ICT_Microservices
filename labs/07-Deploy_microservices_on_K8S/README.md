@@ -75,9 +75,10 @@ Invoke the microservice:
 
 ```console
 $ curl localhost:32102/customers-service/v2/customers/
+[]
 ```
 
-You should receive an empty list just because the database is empty.
+You should get an empty array just because at this stage the database is empty.
 
 ## Deploy Order microservice
 
