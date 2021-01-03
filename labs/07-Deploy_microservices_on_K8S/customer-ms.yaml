@@ -1,0 +1,49 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-deployment
+  labels:
+    app: customer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customer
+  template:
+    metadata:
+      labels:
+        app: customer
+    spec:
+      containers:
+        - name: customer-ms
+          image: dennydgl1/customer:1.0-SNAPSHOT
+          ports:
+          - containerPort: 8102
+          volumeMounts:
+          - mountPath: /app/config
+            readOnly: true
+            name: customer-conf
+      volumes:
+      - name: customer-conf
+        configMap:
+          name: customer-conf
+          items:
+            - key: application.properties
+              path: application.properties
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-service
+  labels:
+    app: customer
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      nodePort: 32102
+      port: 8102
+      targetPort: 8102
+  selector:
+    app: customer

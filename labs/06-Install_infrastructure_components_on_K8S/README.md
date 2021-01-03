@@ -117,8 +117,50 @@ logstash-logstash-0   0/1     Running   0          41s
 
 ## Deploy MongoDB infrastructure
 
+Install MongoDB standalone instance for Customer microservice
+
+```console
+$ helm install --values mongodb-values.yaml customer-mongodb bitnami/mongodb
+NAME: customer-mongodb
+LAST DEPLOYED: Sun Jan  3 09:08:08 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+...
+```
+
+To check if MongoDB has been started correctly (it may take a while to get Running and Ready):
+
+```console
+$  kubectl get pods | grep mongo
+customer-mongodb-64df6b7549-4ms2r   1/1     Running   0          100s
+```
+
 ## Deploy PostgreSQL infrastructure
 
-## Deploy Customser microservice
+Install PostgreSQL standalone instance for Order microservice
 
-## Deploy Order microservice
+```console
+$ helm install --values postgresql-values.yaml order-postgres bitnami/postgresql
+NAME: order-postgres
+LAST DEPLOYED: Sun Jan  3 09:13:34 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+```
+
+To check if PostgreSQL has been started correctly (it may take a while to get Running and Ready):
+
+```console
+$  kubectl get pods | grep postgres
+order-postgres-0                    1/1     Running   0          4m9s
+```
+
+To connect to PostgreSQL from CLI
+
+```console
+$ kubectl run order-postgres-client --rm --tty -i --restart='Never' --namespace default --image docker.io/bitnami/postgresql:11.10.0-debian-10-r24 --env="PGPASSWORD=postgres" --command -- psql --host order-postgres -U postgres -d postgres -p 5432
+```
+
