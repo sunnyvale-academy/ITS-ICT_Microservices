@@ -212,7 +212,4 @@ deployment.apps/notification-deployment   1/1     1            1           23s
 
 NAME                                       READY   STATUS    RESTARTS   AGE
 pod/notification-deployment-6df99bcbd4-dwgpr   1/1     Running   0          23s
-
-NAME                       TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
-service/notification-service   NodePort   10.108.241.163   <none>        8102:32102/TCP   23s
 ```
