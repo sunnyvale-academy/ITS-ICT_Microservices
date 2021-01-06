@@ -18,6 +18,9 @@ jobs:
         working-directory: labs/02-eCommerce_microservices/customer
     steps:
     - uses: actions/checkout@v2
+    - name: Add hosts to /etc/hosts
+      run: |
+        sudo echo "127.0.0.1 customer-mongodb order-postgres kafka" | sudo tee -a /etc/hosts
     - name: Get branch
       id: get_branch
       run: echo ::set-output name=BRANCH::$(echo $GITHUB_REF | cut -d / -f 3)
