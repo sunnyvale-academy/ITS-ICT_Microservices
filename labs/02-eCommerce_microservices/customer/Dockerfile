@@ -2,6 +2,7 @@ FROM maven:3.6.3-jdk-8-slim as builder
 ARG MVN_ARGS
 ADD ./src/ /app/src/
 ADD ./pom.xml /app/pom.xml
+RUN echo "127.0.0.1 customer-mongodb" >> /etc/hosts
 WORKDIR /app
 RUN mvn --batch-mode package ${MVN_ARGS}
 
