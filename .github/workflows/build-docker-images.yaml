@@ -28,7 +28,7 @@ jobs:
       id: get_commit_sha
       run: echo ::set-output name=COMMIT_SHA::$(git rev-parse --short "$GITHUB_SHA")
     - name: Build and push Docker image
-      uses: docker/c@v1.1.0
+      uses: docker/build-push-action@v1.1.0 
       with:
         path: labs/02-eCommerce_microservices/customer/
         dockerfile: labs/02-eCommerce_microservices/customer/Dockerfile
