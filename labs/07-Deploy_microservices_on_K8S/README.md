@@ -36,7 +36,7 @@ $ docker push <YOUR_DOCKERHUB_USER>/customer:1.0-SNAPSHOT
 
 Create the ConfigMap object to store **application.properties** file
 
-```console 
+```console
 $ kubectl create configmap customer-cm --from-file ../02-eCommerce_microservices/customer/src/main/resources/application.properties customer-conf
 configmap/customer-conf created
 ```
