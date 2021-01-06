@@ -71,10 +71,10 @@ NAME                       TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)    
 service/customer-service   NodePort   10.108.241.163   <none>        8102:32102/TCP   23s
 ```
 
-Invoke the microservice:
+Invoke the microservice (please substitute **\<K8S NODE\>** placeholder with the IP address of one Kubernetes node):
 
 ```console
-$ curl localhost:32102/customers-service/v2/customers/
+$ curl <K8S NODE>:32102/customers-service/v2/customers/
 []
 ```
 
@@ -144,10 +144,10 @@ NAME                       TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)    
 service/order-service   NodePort   10.108.241.163   <none>        8102:32102/TCP   23s
 ```
 
-Invoke the microservice:
+Invoke the microservice (please substitute **\<K8S NODE\>** placeholder with the IP address of one Kubernetes node):
 
 ```console
-$ curl localhost:32102/orders-service/v2/orders/
+$ curl <K8S NODE>:32103/orders-service/v2/orders/
 []
 ```
 
