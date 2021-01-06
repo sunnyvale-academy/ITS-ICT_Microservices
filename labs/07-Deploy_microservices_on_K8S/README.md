@@ -183,7 +183,7 @@ $ docker push <YOUR_DOCKERHUB_USER>/notification:1.0-SNAPSHOT
 Create the ConfigMap object to store **application.properties** file
 
 ```console
-$ kubectl create configmap --from-file ../02-eCommerce_microservices/notification/src/main/resources/application.properties notification-conf
+$ kubectl create configmap notification-conf --from-file ../02-eCommerce_microservices/notification/src/main/resources/application.properties notification-conf
 configmap/notification-conf created
 ```
 
