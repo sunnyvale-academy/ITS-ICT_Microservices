@@ -1,0 +1,41 @@
+# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Java CI with Maven
+
+on:
+  #push:
+  #  tags:
+  #  - '*'
+  workflow_dispatch:
+
+jobs:
+  
+  build-customer:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: labs/02-eCommerce_microservices/customer
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get branch
+      id: get_branch
+      run: echo ::set-output name=BRANCH::$(echo $GITHUB_REF | cut -d / -f 3)
+    - name: Get the commit SHA
+      id: get_commit_sha
+      run: echo ::set-output name=COMMIT_SHA::$(git rev-parse --short "$GITHUB_SHA")
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v1.1.0
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: ${{ secrets.DOCKER_USERNAME }}/java-hello-world
+        tags: ${{ steps.get_version.outputs.COMMIT_SHA }}-${{ steps.get_version.outputs.BRANCH }}, latest
+        build_args: |
+          TAG=${{ steps.get_version.outputs.COMMIT_SHA }}-${{ steps.get_version.outputs.BRANCH }}
