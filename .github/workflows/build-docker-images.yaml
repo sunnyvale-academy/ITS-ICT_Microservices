@@ -40,7 +40,7 @@ jobs:
         dockerfile: labs/02-eCommerce_microservices/customer/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: ${{ secrets.DOCKER_USERNAME }}/java-hello-world
+        repository: ${{ secrets.DOCKER_USERNAME }}/customer
         tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
         build_args: |
           TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
