@@ -32,7 +32,7 @@ jobs:
       with:
         java-version: 11
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -DskipTests -B package --file pom.xml
     - name: Build and push Docker image
       uses: docker/build-push-action@v1.1.0
       with:
