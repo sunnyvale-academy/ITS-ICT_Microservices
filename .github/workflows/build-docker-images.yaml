@@ -37,7 +37,7 @@ jobs:
       uses: docker/build-push-action@v1.1.0
       with:
         path: labs/02-eCommerce_microservices/customer/
-        dockerfile: Dockerfile
+        dockerfile: labs/02-eCommerce_microservices/customer/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: ${{ secrets.DOCKER_USERNAME }}/java-hello-world
