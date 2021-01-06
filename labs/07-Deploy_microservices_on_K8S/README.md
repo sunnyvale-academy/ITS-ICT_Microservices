@@ -110,7 +110,7 @@ $ docker push <YOUR_DOCKERHUB_USER>/order:1.0-SNAPSHOT
 Create the ConfigMap object to store **application.properties** file
 
 ```console
-$ kubectl create configmap --from-file ../02-eCommerce_microservices/order/src/main/resources/application.properties order-conf
+$ kubectl create configmap order-cm --from-file ../02-eCommerce_microservices/order/src/main/resources/application.properties order-conf
 configmap/order-conf created
 ```
 
