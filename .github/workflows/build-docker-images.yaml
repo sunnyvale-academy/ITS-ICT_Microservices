@@ -39,6 +39,6 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: ${{ secrets.DOCKER_USERNAME }}/java-hello-world
-        tags: ${{ steps.get_version.outputs.COMMIT_SHA }}-${{ steps.get_version.outputs.BRANCH }}, latest
+        tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
         build_args: |
-          TAG=${{ steps.get_version.outputs.COMMIT_SHA }}-${{ steps.get_version.outputs.BRANCH }}
+          TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
