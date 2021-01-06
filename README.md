@@ -18,6 +18,12 @@
 
 - [07 - Deploy microservices on K8S](labs/07-Deploy_microservices_on_K8S/README.md)
 
+- [08 - Microservices continuous delivery and integration](labs/08-Microservices_continuous_delivery_and_integration/README.md)
+
+- [09 - Service mesh](labs/09-Service_mesh/README.md)
+
+- [10 - Microservices monitoring](labs/10-Microservices_monitoring/README.md)
+
 ## Assignments
 
 - [01 - Library application](assignments/01-Library_application/README.md)
