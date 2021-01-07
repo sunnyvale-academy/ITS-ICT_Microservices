@@ -52,18 +52,5 @@ data:
     management.endpoint.info.enabled=true
     management.security.enabled=false
 metadata:
-  creationTimestamp: "2021-01-06T09:12:32Z"
-  managedFields:
-  - apiVersion: v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:data:
-        .: {}
-        f:application.properties: {}
-    manager: kubectl-create
-    operation: Update
-    time: "2021-01-06T09:12:32Z"
   name: notification-conf
   namespace: default
-  resourceVersion: "3344"
-  uid: 319861d5-e520-4048-9c55-23f472a00b23
