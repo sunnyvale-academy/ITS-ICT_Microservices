@@ -31,3 +31,39 @@ spec:
           items:
             - key: application.properties
               path: application.properties
+---
+apiVersion: v1
+kind: ConfigMap
+data:
+  application.properties: |-
+    # Kafka properties
+    kafka.sms.topic=sms
+    kafka.broker.urls=kafka:9092    
+
+    # App config
+    server.port=8104
+    spring.application.name=NotificationMicroservice
+    server.servlet.context-path=/notification-service
+
+    # Log config
+    logging.level.org.springframework.web.servlet.DispatcherServlet=TRACE
+
+    # Management config
+    management.endpoint.info.enabled=true
+    management.security.enabled=false
+metadata:
+  creationTimestamp: "2021-01-06T09:12:32Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:application.properties: {}
+    manager: kubectl-create
+    operation: Update
+    time: "2021-01-06T09:12:32Z"
+  name: notification-conf
+  namespace: default
+  resourceVersion: "3344"
+  uid: 319861d5-e520-4048-9c55-23f472a00b23

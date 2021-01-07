@@ -109,3 +109,8 @@ $ argocd app create microservices \
     --revision master 
 application 'microservices' created
 ```
+
+The application is now deployed on Kubernetes and ArgoCD web interface showes it:
+
+![](img/2.png)
+
