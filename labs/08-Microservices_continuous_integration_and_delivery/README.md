@@ -110,7 +110,6 @@ $ argocd app create microservices \
 application 'microservices' created
 ```
 
-The application is now deployed on Kubernetes and ArgoCD web interface showes it:
+The application is now deployed on Kubernetes and ArgoCD web interface displays it:
 
 ![](img/2.png)
-
