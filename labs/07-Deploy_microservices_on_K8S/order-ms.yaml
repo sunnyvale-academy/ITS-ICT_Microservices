@@ -19,7 +19,7 @@ spec:
         - name: order-ms
           image: dennydgl1/order:1.0-SNAPSHOT
           ports:
-          - containerPort: 8102
+          - containerPort: 8103
           volumeMounts:
           - mountPath: /app/config
             readOnly: true
@@ -42,8 +42,8 @@ spec:
   type: NodePort
   ports:
     - name: http
-      nodePort: 32102
-      port: 8102
-      targetPort: 8102
+      nodePort: 32103
+      port: 8103
+      targetPort: 8103
   selector:
     app: order

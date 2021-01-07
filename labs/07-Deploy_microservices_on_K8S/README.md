@@ -141,7 +141,7 @@ NAME                                       READY   STATUS    RESTARTS   AGE
 pod/order-deployment-6df99bcbd4-dwgpr   1/1     Running   0          23s
 
 NAME                       TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
-service/order-service   NodePort   10.108.241.163   <none>        8102:32102/TCP   23s
+service/order-service   NodePort   10.109.241.163   <none>        8103:32103/TCP   23s
 ```
 
 Invoke the microservice (please substitute **\<K8S NODE\>** placeholder with the IP address of one Kubernetes node):
