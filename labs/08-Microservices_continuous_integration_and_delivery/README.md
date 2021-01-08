@@ -1,5 +1,19 @@
 # Microservices continuous integration and delivery
 
+## Prerequisites
+
+Before running this lab you should have on your Kubernetes cluster all the infrastructure components up and running (see [06 - Install infrastructure components on K8S](labs/06-Install_infrastructure_components_on_K8S/README.md).
+
+Also, since now we will use ArgoCD to deploy your microservices on Kubernetes, make sure that no microservices is still running from the previous lab by typing:
+
+```console
+$ kubectl delete cm,deploy,svc -l app=notification,order,customer
+```
+
+The ArgoCD CLI must be installed (more at https://argoproj.github.io/argo-cd/cli_installation/).
+
+
+
 ## Automatically build microservices source code, create Docker images and push them on DockerHUB
 
 Have a look of [.github/workflows/build-docker-images.yaml](../../.github/workflows/build-docker-images.yaml) to find out how CI/CD has been implemented to automatically build microservices source code, create Docker images and push them on DockerHUB.
@@ -56,7 +70,7 @@ replicaset.apps/argocd-repo-server-5c76bd686b               1         1         
 replicaset.apps/argocd-server-67885bdcff                    1         1         1       2d21h
 ```
 
-Make sure that all the Pods are running
+Make sure that all the Pods are running.
 
 ## Test ArgoCD
 

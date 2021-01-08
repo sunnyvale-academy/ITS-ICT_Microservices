@@ -214,7 +214,7 @@ NAME                                       READY   STATUS    RESTARTS   AGE
 pod/notification-deployment-6df99bcbd4-dwgpr   1/1     Running   0          23s
 ```
 
-When finished, remember to remove all the things you created so far in order to make room for the next lab.
+When finished, remember to remove all the microservices you created so far (a part from the infrastructure components that must be kept running) in order to make room for the next lab.
 
 ```console
 $ kubectl delete cm,deploy,pod,svc -l app=notification,order,customer
