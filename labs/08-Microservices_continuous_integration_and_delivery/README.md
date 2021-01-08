@@ -124,5 +124,14 @@ $ cat ../07-Deploy_microservices_on_K8S/customer-ms.yaml | grep replicas
 ```
 Then commit + push your mldification on GitHub.
 
+If you wait for a minute, you should see that ArgoCD spinned up one more Pod for the customer  microservice:
+
+![](img/3.png)
+
+To remove the application:
+
+```console
+$ argocd app delete microservices --cascade
+```
 
 
