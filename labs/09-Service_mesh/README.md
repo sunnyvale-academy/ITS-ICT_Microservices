@@ -36,7 +36,7 @@ See https://istio.io/latest/docs/setup/install/ to add Istio to your Kubernetes 
 
 To configure the istioctl client tool for your workstation,
 add the /home/developer/ITS-ICT_Microservices/istio-1.8.1/bin directory to your environment path variable with:
-         export PATH="$PATH:/home/developer/istio-1.8.1/bin"
+         export PATH="$PATH:/home/developer/ITS-ICT_Microservices/labs/09-Service_mesh/istio-1.8.1"
 
 Begin the Istio pre-installation check by running:
          istioctl x precheck 
@@ -54,6 +54,7 @@ Prepend the current working dir to the PATH env. variable
 
 ```console
 $ export PATH=$PWD/bin:$PATH
+$ cd ..
 ```
 
 Install Istio
@@ -224,3 +225,24 @@ $ curl -vvv http://192.168.39.77:30033/customers-service/v2/customers
 The empty arrays `[]` mean that the services are available and return no records.
 
 ## Install **Kiali**, the Istio UI
+
+```console
+$ kubectl apply -f istio-1.8.1/samples/addons/
+...
+```
+
+
+
+Wait a few minutes and start a port forward 
+
+```console
+$ kubectl port-forward svc/kiali --address 0.0.0.0 -n istio-system 20001:20001
+Forwarding from 0.0.0.0:20001 -> 20001
+```
+
+
+Open your browser on http://localhost:20001/kiali
+
+![](img/1.png) 
+
+You can see the microservices architecture topology.
