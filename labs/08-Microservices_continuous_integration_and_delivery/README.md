@@ -113,3 +113,16 @@ application 'microservices' created
 The application is now deployed on Kubernetes and ArgoCD web interface displays it:
 
 ![](img/2.png)
+
+To modify the running state of your application, just modify one of the manifests contained in [07 - Deploy microservices on K8S](labs/07-Deploy_microservices_on_K8S) and ArgoCD will take car to apply the desired state to the current state.
+
+For example, scale your **customer** microservices to 2 Pods by modifying the manifest as shown below:
+
+```console
+$ cat ../07-Deploy_microservices_on_K8S/customer-ms.yaml | grep replicas
+  replicas: 2
+```
+Then commit + push your mldification on GitHub.
+
+
+

@@ -213,3 +213,9 @@ deployment.apps/notification-deployment   1/1     1            1           23s
 NAME                                       READY   STATUS    RESTARTS   AGE
 pod/notification-deployment-6df99bcbd4-dwgpr   1/1     Running   0          23s
 ```
+
+When finished, remember to remove all the things you created so far in order to make room for the next lab.
+
+```console
+$ kubectl delete cm,deploy,pod,svc -l app=notification,order,customer
+```
