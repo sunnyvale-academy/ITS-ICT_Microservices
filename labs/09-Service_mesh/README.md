@@ -246,3 +246,5 @@ Open your browser on http://localhost:20001/kiali
 ![](img/1.png) 
 
 You can see the microservices architecture topology.
+
+What we did until now is needed for the next lab. Please keep all the system running before starting [10 - Microservices monitoring](labs/10-Microservices_monitoring/README.md)
