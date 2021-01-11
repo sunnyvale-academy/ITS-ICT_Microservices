@@ -24,3 +24,5 @@ output:
   enabled: true  
   hosts:   
       - logstash:5044
+
+strict.perms: false
