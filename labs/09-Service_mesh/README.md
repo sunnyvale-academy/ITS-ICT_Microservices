@@ -121,6 +121,33 @@ pod/order-postgres-0                           1/1     Running   1          12h
 
 Notice that each microservices has now two containers in it (READY 2/2).
 
+If there are still pods with a single container (for example the infrastructure Pods), restart them all:
+
+```console
+$ kubectl delete pod -n default --all
+pod "customer-deployment-5fc97c5659-xlf9d" deleted
+pod "customer-mongodb-677d89fddf-scpqp" deleted
+pod "kafka-0" deleted
+pod "kafka-zookeeper-0" deleted
+pod "notification-deployment-5d898f54c5-tvdr2" deleted
+pod "order-deployment-796647466b-4cw5b" deleted
+pod "order-postgres-0" deleted
+```
+
+Now each Pod should have 2 containers in it
+
+```console
+$ kubectl get pods
+NAME                                       READY   STATUS    RESTARTS   AGE
+customer-deployment-5fc97c5659-v8fmk       2/2     Running   0          86s
+customer-mongodb-677d89fddf-dqv7l          2/2     Running   0          86s
+kafka-0                                    2/2     Running   0          49s
+kafka-zookeeper-0                          2/2     Running   0          79s
+notification-deployment-5d898f54c5-8gv6q   2/2     Running   0          86s
+order-deployment-796647466b-lgg4z          2/2     Running   2          86s
+order-postgres-0                           2/2     Running   0          19s
+```
+
 Test the customer microservice
 
 ```console
@@ -147,15 +174,10 @@ Ensure that there are no issues with the configuration:
 
 ```console
 $ istioctl analyze
-Warning [IST0103] (Pod customer-mongodb-66f78bcc7f-ps9l7.default) The pod is missing the Istio proxy. This can often be resolved by restarting or redeploying the workload.
-Warning [IST0103] (Pod kafka-0.default) The pod is missing the Istio proxy. This can often be resolved by restarting or redeploying the workload.
-Warning [IST0103] (Pod kafka-zookeeper-0.default) The pod is missing the Istio proxy. This can often be resolved by restarting or redeploying the workload.
-Warning [IST0103] (Pod order-postgres-0.default) The pod is missing the Istio proxy. This can often be resolved by restarting or redeploying the workload.
 Info [IST0118] (Service kafka-zookeeper-headless.default) Port name follower (port: 2888, targetPort: follower) doesn't follow the naming convention of Istio port.
 Info [IST0118] (Service kafka-zookeeper.default) Port name follower (port: 2888, targetPort: follower) doesn't follow the naming convention of Istio port.
 ```
 
-We can forget about the warnings (if any).
 
 ## Call microservices through Istio
 
@@ -231,7 +253,7 @@ $ kubectl apply -f istio-1.8.1/samples/addons/
 ...
 ```
 
-
+If you get some error stating **unable to recognize "istio-1.8.1/samples/addons/kiali.yaml": no matches for kind "MonitoringDashboard" in version "monitoring.kiali.io/v1alpha1"**, you may need to apply the resources using `kubectl` twice.
 
 Wait a few minutes and start a port forward 
 
