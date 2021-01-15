@@ -90,7 +90,7 @@ To check if Logstash has been started correctly (it may take a while to get Runn
 ```console
 $ kubectl get pods --namespace=default -l app=logstash-logstash
 NAME                  READY   STATUS    RESTARTS   AGE
-logstash-logstash-0   0/1     Running   0          41s
+logstash-logstash-0   1/1     Running   0          41s
 ```
 
 Install Filebeat as a DaemonSet
@@ -106,12 +106,32 @@ TEST SUITE: None
 ...
 ```
 
-To check if Logstash has been started correctly (it may take a while to get Running and Ready):
+To check if Filebeat has been started correctly (it may take a while to get Running and Ready):
 
 ```console
 $ kubectl get pods --namespace=default -l app=filebeat
 NAME                  READY   STATUS    RESTARTS   AGE
-logstash-logstash-0   0/1     Running   0          41s
+filebeat-r9p9r   1/1     Running   0          86s
+```
+
+Install Kibana
+
+```console
+$ helm install --values kibana-values.yaml kibana elastic/kibana
+NAME: kibana
+LAST DEPLOYED: Sat Jan  2 11:04:15 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+...
+```
+
+To check if Kibana has been started correctly (it may take a while to get Running and Ready):
+
+```console
+$ kubectl get pods --namespace=default -l app=kibana
+NAME                     READY   STATUS    RESTARTS   AGE
+kibana-84579f77bc-n82d6   1/1     Running   0          6m43s
 ```
 
 
