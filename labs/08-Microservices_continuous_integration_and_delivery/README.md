@@ -18,7 +18,7 @@ The ArgoCD CLI must be installed (more at https://argoproj.github.io/argo-cd/cli
 
 Have a look of [.github/workflows/build-docker-images.yaml](../../.github/workflows/build-docker-images.yaml) to find out how CI/CD has been implemented to automatically build microservices source code, create Docker images and push them on DockerHUB.
 
-## Automatically deploy microservices on Kubernetess
+## Automatically deploy microservices on Kubernetes
 
 ### Install ArgoCD on Kubernetes
 
