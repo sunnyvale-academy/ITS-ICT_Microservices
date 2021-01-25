@@ -1,0 +1,85 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: borrow-deployment
+  labels:
+    app: borrow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: borrow
+  template:
+    metadata:
+      labels:
+        app: borrow
+    spec:
+      containers:
+        - name: borrow-ms
+          image: filipposavarese/borrow:1.0-SNAPSHOT
+          ports:
+          - containerPort: 8103
+          volumeMounts:
+          - mountPath: /app/config
+            readOnly: true
+            name: borrow-conf
+      volumes:
+      - name: borrow-conf
+        configMap:
+          name: borrow-conf
+          items:
+            - key: application.properties
+              path: application.properties
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: borrow-service
+  labels:
+    app: borrow
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      nodePort: 32103
+      port: 8103
+      targetPort: 8103
+  selector:
+    app: borrow
+---
+apiVersion: v1
+kind: ConfigMap
+data:
+  application.properties: |-
+    # Local Postgres config
+    spring.jpa.hibernate.ddl-auto=none
+    spring.datasource.initialization-mode=always
+    spring.datasource.platform=postgres
+    spring.datasource.url=jdbc:postgresql://borrow-postgres:5432/borrow
+    spring.datasource.username=postgres
+    spring.datasource.password=postgres
+    spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+
+    # App config
+    server.port=8103
+    spring.application.name=BorrowMicroservice
+    server.servlet.context-path=/borrows-service
+
+    # Log config
+    logging.level.org.springframework.web.servlet.DispatcherServlet=TRACE
+
+    # Management config
+    management.endpoint.info.enabled=true
+    management.security.enabled=false
+
+    # Kafka
+    kafka.sms.topic=sms
+    kafka.sms.message=A new borrow has been submitted
+    spring.kafka.producer.bootstrap-servers=kafka:9092
+    spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+    #spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+    spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonSerializer
+metadata:
+  name: borrow-conf
+  namespace: default
