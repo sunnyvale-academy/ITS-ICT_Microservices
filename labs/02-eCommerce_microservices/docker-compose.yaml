@@ -11,6 +11,7 @@ services:
       - "8102:8102"
     depends_on:
       - mongodb_db
+
   mongodb_db:
     image: mongo:latest
     container_name: customer-mongodb
@@ -22,6 +23,7 @@ services:
       - 27017:27017
     volumes:
       - mongodb_data:/data/db
+
   #
   # Order Microservice
   #
@@ -33,6 +35,7 @@ services:
       - "8103:8103"
     depends_on:
       - postgres_db
+
   postgres_db:
     image: postgres:latest
     container_name: order-postgres
@@ -46,6 +49,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
+
   #
   # Notification
   #
@@ -57,6 +61,7 @@ services:
       - "8104:8104"
     depends_on:
       - kafka
+
   zookeeper:
     image: zookeeper
     container_name: zookeeper
@@ -64,6 +69,7 @@ services:
       - "2181:2181"
     environment:
       zk_id: "1"
+
   kafka:
     image: bitnami/kafka
     container_name: kafka
@@ -75,6 +81,10 @@ services:
     environment:
       KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
       ALLOW_PLAINTEXT_LISTENER: "yes"
+
+  
+
+
 volumes:
  mongodb_data: {}
  postgres_data: {}

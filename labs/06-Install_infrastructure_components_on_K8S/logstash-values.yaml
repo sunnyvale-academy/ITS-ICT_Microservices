@@ -1,0 +1,51 @@
+---
+fullnameOverride: logstash
+
+service: 
+  annotations: {}
+  type: ClusterIP
+  ports:
+    - name: logstash
+      port: 5044
+      protocol: TCP
+      targetPort: 5044
+
+# Allows you to add any config files in /usr/share/logstash/config/
+# such as logstash.yml and log4j2.properties
+#
+# Note that when overriding logstash.yml, `http.host: 0.0.0.0` should always be included
+# to make default probes work.
+logstashConfig:
+  logstash.yml: |
+    ---
+    http.host: "0.0.0.0"
+    xpack.monitoring.elasticsearch.hosts: [ "http://elasticsearch:9200" ]
+    xpack.monitoring.enabled: true
+    xpack.monitoring.elasticsearch.username: elastic
+    xpack.monitoring.elasticsearch.password: changeme
+
+
+# Allows you to add any pipeline files in /usr/share/logstash/pipeline/
+### ***warn*** there is a hardcoded logstash.conf in the image, override it first
+logstashPipeline:
+  logstash.conf: |
+    input {
+      beats {
+        port => 5044
+      }
+
+      tcp {
+        port => 5000
+      }
+    }
+
+    ## Add your filters / logstash plugins configuration here
+
+    output {
+      elasticsearch {
+        hosts => "elasticsearch:9200"
+        user => "elastic"
+        password => "changeme"
+        ecs_compatibility => disabled
+      }
+    }

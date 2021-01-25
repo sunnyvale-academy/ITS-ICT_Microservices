@@ -1,0 +1,56 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-deployment
+  labels:
+    app: notification
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification
+  template:
+    metadata:
+      labels:
+        app: notification
+    spec:
+      containers:
+        - name: notification-ms
+          image: dennydgl1/notification:1.0-SNAPSHOT
+          ports:
+          - containerPort: 8102
+          volumeMounts:
+          - mountPath: /app/config
+            readOnly: true
+            name: notification-conf
+      volumes:
+      - name: notification-conf
+        configMap:
+          name: notification-conf
+          items:
+            - key: application.properties
+              path: application.properties
+---
+apiVersion: v1
+kind: ConfigMap
+data:
+  application.properties: |-
+    # Kafka properties
+    kafka.sms.topic=sms
+    kafka.broker.urls=kafka:9092    
+
+    # App config
+    server.port=8104
+    spring.application.name=NotificationMicroservice
+    server.servlet.context-path=/notification-service
+
+    # Log config
+    logging.level.org.springframework.web.servlet.DispatcherServlet=TRACE
+
+    # Management config
+    management.endpoint.info.enabled=true
+    management.security.enabled=false
+metadata:
+  name: notification-conf
+  namespace: default

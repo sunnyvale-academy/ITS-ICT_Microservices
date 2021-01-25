@@ -1,0 +1,85 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-deployment
+  labels:
+    app: order
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers:
+        - name: order-ms
+          image: dennydgl1/order:1.0-SNAPSHOT
+          ports:
+          - containerPort: 8103
+          volumeMounts:
+          - mountPath: /app/config
+            readOnly: true
+            name: order-conf
+      volumes:
+      - name: order-conf
+        configMap:
+          name: order-conf
+          items:
+            - key: application.properties
+              path: application.properties
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+  labels:
+    app: order
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      nodePort: 32103
+      port: 8103
+      targetPort: 8103
+  selector:
+    app: order
+---
+apiVersion: v1
+kind: ConfigMap
+data:
+  application.properties: |-
+    # Local Postgres config
+    spring.jpa.hibernate.ddl-auto=none
+    spring.datasource.initialization-mode=always
+    spring.datasource.platform=postgres
+    spring.datasource.url=jdbc:postgresql://order-postgres:5432/order
+    spring.datasource.username=postgres
+    spring.datasource.password=postgres
+    spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+
+    # App config
+    server.port=8103
+    spring.application.name=OrderMicroservice
+    server.servlet.context-path=/orders-service
+
+    # Log config
+    logging.level.org.springframework.web.servlet.DispatcherServlet=TRACE
+
+    # Management config
+    management.endpoint.info.enabled=true
+    management.security.enabled=false
+
+    # Kafka
+    kafka.sms.topic=sms
+    kafka.sms.message=A new order has been submitted
+    spring.kafka.producer.bootstrap-servers=kafka:9092
+    spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+    #spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+    spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonSerializer
+metadata:
+  name: order-conf
+  namespace: default

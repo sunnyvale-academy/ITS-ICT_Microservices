@@ -1,0 +1,76 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-deployment
+  labels:
+    app: customer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customer
+  template:
+    metadata:
+      labels:
+        app: customer
+    spec:
+      containers:
+        - name: customer-ms
+          image: dennydgl1/customer:1.0-SNAPSHOT
+          ports:
+          - containerPort: 8102
+          volumeMounts:
+          - mountPath: /app/config
+            readOnly: true
+            name: customer-conf
+      volumes:
+      - name: customer-conf
+        configMap:
+          name: customer-conf
+          items:
+            - key: application.properties
+              path: application.properties
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-service
+  labels:
+    app: customer
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      nodePort: 32102
+      port: 8102
+      targetPort: 8102
+  selector:
+    app: customer
+---
+apiVersion: v1
+kind: ConfigMap
+data:
+  application.properties: |-
+    #Local MongoDB config
+    spring.data.mongodb.authentication-database=admin
+    spring.data.mongodb.username=root
+    spring.data.mongodb.password=root
+    spring.data.mongodb.database=customer_db
+    spring.data.mongodb.port=27017
+    spring.data.mongodb.host=customer-mongodb
+
+    # App config
+    server.port=8102
+    spring.application.name=CustomerMicroservice
+    server.servlet.context-path=/customers-service
+
+    # Log config
+    logging.level.org.springframework.web.servlet.DispatcherServlet=TRACE
+
+    # Management config
+    management.endpoint.info.enabled=true
+    management.security.enabled=false
+metadata:
+  name: customer-conf
+  namespace: default
