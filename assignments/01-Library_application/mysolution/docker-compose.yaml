@@ -56,7 +56,7 @@ services:
       context: ./borrow
     container_name: borrow-ms
     ports:
-      - "8103:8103"
+      - "8120:8120"
     depends_on:
       - postgres_db
   postgres_db:
