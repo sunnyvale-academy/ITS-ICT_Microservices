@@ -12,18 +12,6 @@ services:
       - "8122:8122"
     depends_on:
       - mongodb_db
-
-  mongodb_db:
-    image: mongo:latest
-    container_name: book-mongodb
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-      MONGO_INITDB_DATABASE: book_db
-    ports:
-      - 27017:27017
-    volumes:
-      - mongodb_data:/data/db
   
   #
   # Customer Microservice
@@ -36,14 +24,14 @@ services:
       - "8112:8112"
     depends_on:
       - mongodb_db
+      
 
   mongodb_db:
     image: mongo:latest
-    container_name: customer-mongodb
+    container_name: book-customer-mongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
-      MONGO_INITDB_DATABASE: customer_db
     ports:
       - 27017:27017
     volumes:
