@@ -26,9 +26,8 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
     }
 
     private ApiInfo apiEndPointsInfo() {
-        return new ApiInfoBuilder().title("Customer REST API")
-                .description("Customer REST API")
-                //.contact(new Contact("Denis Maggiorotto", "www.sunnyvale.it", "denis.maggiorotto@sunnyvale.it"))
+        return new ApiInfoBuilder().title("Borrow REST API")
+                .description("Borrow REST API")
                 .version("1.0.0")
                 .build();
     }

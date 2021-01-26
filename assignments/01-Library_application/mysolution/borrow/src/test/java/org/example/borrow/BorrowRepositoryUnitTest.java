@@ -36,15 +36,15 @@ public class BorrowRepositoryUnitTest {
     @Test
     public void testAddOneBorrow(){
         AtomicInteger cont = new AtomicInteger();
-        borrowRepository.findAll().forEach(borrow -> {
-            cont.getAndIncrement();
-        });
         Borrow borrow = new Borrow();
+        borrow.setBorrowId((long) 112324);
         borrow.setCustomerId("4532521354");
         borrow.setBookId("12453243542");
         borrow.setNotifyToPhoneNr("2312313435");
-        borrow.setBorrowId((long) 112324);
         borrowRepository.save(borrow);
+        borrowRepository.findAll().forEach(borrowing -> {
+            cont.getAndIncrement();
+        });
         assertEquals(1,cont.get()  );
 
     }

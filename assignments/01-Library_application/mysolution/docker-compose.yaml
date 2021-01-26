@@ -24,7 +24,7 @@ services:
       - "8112:8112"
     depends_on:
       - mongodb_db
-      
+
 
   mongodb_db:
     image: mongo:latest
@@ -44,9 +44,10 @@ services:
       context: ./borrow
     container_name: borrow-ms
     ports:
-      - "8120:8120"
+      - "8103:8103"
     depends_on:
       - postgres_db
+      
   postgres_db:
     image: postgres:latest
     container_name: borrow-postgres
@@ -54,12 +55,11 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./borrow/dbinit.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+      - ./borrow/dbinit.sql:/docker-entrypoint-initdb.d/dbinit.sql
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
   #
   # Notification
   #

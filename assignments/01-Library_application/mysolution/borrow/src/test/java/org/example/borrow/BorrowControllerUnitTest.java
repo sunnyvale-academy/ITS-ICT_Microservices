@@ -2,6 +2,7 @@ package org.example.borrow;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.example.borrow.controllers.BorrowController;
+import org.example.borrow.services.NotificationClient;
 import org.example.borrow.services.TraceService;
 import org.example.borrow.repos.BorrowRepository;
 import org.junit.Test;
@@ -30,6 +31,9 @@ public class BorrowControllerUnitTest {
 
     @MockBean
     TraceService traceService;
+
+    @MockBean
+    NotificationClient notificationClient;
     
     @Test
     public void testGetAllBorrows() {
