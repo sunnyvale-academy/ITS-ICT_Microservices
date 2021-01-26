@@ -27,7 +27,7 @@ jobs:
           dockerfile: assignments/01-Library_application/mysolution/book/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: FilippoSavarese/book
+          repository: filipposavarese/book
           tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
           build_args: |
             TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
@@ -54,7 +54,7 @@ jobs:
           dockerfile: assignments/01-Library_application/mysolution/borrow/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: FilippoSavarese/borrow
+          repository: filipposavarese/borrow
           tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
           build_args: |
             TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
@@ -81,7 +81,7 @@ jobs:
           dockerfile: assignments/01-Library_application/mysolution/customer/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: FilippoSavarese/customer
+          repository: filipposavarese/customer
           tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
           build_args: |
             TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
@@ -108,7 +108,7 @@ jobs:
           dockerfile: assignments/01-Library_application/mysolution/notification/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: FilippoSavarese/notification
+          repository: filipposavarese/notification
           tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
           build_args: |
             TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
