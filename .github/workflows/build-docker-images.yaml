@@ -1,96 +1,114 @@
-# This workflow will build a Java project with Maven
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
-
 name: Build and push microservices
 
 on:
-  #push:
-  #  tags:
-  #  - '*'
   workflow_dispatch:
 
 jobs:
-  
+  build-book:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: assignments/01-Library_application/mysolution/book
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add hosts to /etc/hosts
+        run: |
+          sudo echo "127.0.0.1 book-customer-mongodb borrow-postgres kafka" | sudo tee -a /etc/hosts
+      - name: Get branch
+        id: get_branch
+        run: echo ::set-output name=BRANCH::$(echo $GITHUB_REF | cut -d / -f 3)
+      - name: Get the commit SHA
+        id: get_commit_sha
+        run: echo ::set-output name=COMMIT_SHA::$(git rev-parse --short "$GITHUB_SHA")
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v1.1.0
+        with:
+          path: assignments/01-Library_application/mysolution/book
+          dockerfile: assignments/01-Library_application/mysolution/book/Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: FilippoSavarese/book
+          tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
+          build_args: |
+            TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
+  build-borrow:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: assignments/01-Library_application/mysolution/borrow
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add hosts to /etc/hosts
+        run: |
+          sudo echo "127.0.0.1 book-customer-mongodb borrow-postgres kafka" | sudo tee -a /etc/hosts
+      - name: Get branch
+        id: get_branch
+        run: echo ::set-output name=BRANCH::$(echo $GITHUB_REF | cut -d / -f 3)
+      - name: Get the commit SHA
+        id: get_commit_sha
+        run: echo ::set-output name=COMMIT_SHA::$(git rev-parse --short "$GITHUB_SHA")
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v1.1.0
+        with:
+          path: assignments/01-Library_application/mysolution/borrow
+          dockerfile: assignments/01-Library_application/mysolution/borrow/Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: FilippoSavarese/borrow
+          tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
+          build_args: |
+            TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
   build-customer:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: labs/02-eCommerce_microservices/customer
+        working-directory: assignments/01-Library_application/mysolution/customer
     steps:
-    - uses: actions/checkout@v2
-    - name: Add hosts to /etc/hosts
-      run: |
-        sudo echo "127.0.0.1 customer-mongodb order-postgres kafka" | sudo tee -a /etc/hosts
-    - name: Get branch
-      id: get_branch
-      run: echo ::set-output name=BRANCH::$(echo $GITHUB_REF | cut -d / -f 3)
-    - name: Get the commit SHA
-      id: get_commit_sha
-      run: echo ::set-output name=COMMIT_SHA::$(git rev-parse --short "$GITHUB_SHA")
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v1.1.0 
-      with:
-        path: labs/02-eCommerce_microservices/customer/
-        dockerfile: labs/02-eCommerce_microservices/customer/Dockerfile
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: ${{ secrets.DOCKER_USERNAME }}/customer
-        tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
-        build_args: |
-          TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
-  
-  build-order:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: labs/02-eCommerce_microservices/order
-    steps:
-    - uses: actions/checkout@v2
-    - name: Add hosts to /etc/hosts
-      run: |
-        sudo echo "127.0.0.1 customer-mongodb order-postgres kafka" | sudo tee -a /etc/hosts
-    - name: Get branch
-      id: get_branch
-      run: echo ::set-output name=BRANCH::$(echo $GITHUB_REF | cut -d / -f 3)
-    - name: Get the commit SHA
-      id: get_commit_sha
-      run: echo ::set-output name=COMMIT_SHA::$(git rev-parse --short "$GITHUB_SHA")
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v1.1.0 
-      with:
-        path: labs/02-eCommerce_microservices/order/
-        dockerfile: labs/02-eCommerce_microservices/order/Dockerfile
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: ${{ secrets.DOCKER_USERNAME }}/order
-        tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
-        build_args: |
-          TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
-  
+      - uses: actions/checkout@v2
+      - name: Add hosts to /etc/hosts
+        run: |
+          sudo echo "127.0.0.1 book-customer-mongodb borrow-postgres kafka" | sudo tee -a /etc/hosts
+      - name: Get branch
+        id: get_branch
+        run: echo ::set-output name=BRANCH::$(echo $GITHUB_REF | cut -d / -f 3)
+      - name: Get the commit SHA
+        id: get_commit_sha
+        run: echo ::set-output name=COMMIT_SHA::$(git rev-parse --short "$GITHUB_SHA")
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v1.1.0
+        with:
+          path: assignments/01-Library_application/mysolution/customer
+          dockerfile: assignments/01-Library_application/mysolution/customer/Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: FilippoSavarese/customer
+          tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
+          build_args: |
+            TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
   build-notification:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: labs/02-eCommerce_microservices/notification
+        working-directory: assignments/01-Library_application/mysolution/notification
     steps:
-    - uses: actions/checkout@v2
-    - name: Add hosts to /etc/hosts
-      run: |
-        sudo echo "127.0.0.1 customer-mongodb order-postgres kafka" | sudo tee -a /etc/hosts
-    - name: Get branch
-      id: get_branch
-      run: echo ::set-output name=BRANCH::$(echo $GITHUB_REF | cut -d / -f 3)
-    - name: Get the commit SHA
-      id: get_commit_sha
-      run: echo ::set-output name=COMMIT_SHA::$(git rev-parse --short "$GITHUB_SHA")
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v1.1.0 
-      with:
-        path: labs/02-eCommerce_microservices/notification/
-        dockerfile: labs/02-eCommerce_microservices/notification/Dockerfile
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: ${{ secrets.DOCKER_USERNAME }}/notification
-        tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
-        build_args: |
-          TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
+      - uses: actions/checkout@v2
+      - name: Add hosts to /etc/hosts
+        run: |
+          sudo echo "127.0.0.1 book-customer-mongodb borrow-postgres kafka" | sudo tee -a /etc/hosts
+      - name: Get branch
+        id: get_branch
+        run: echo ::set-output name=BRANCH::$(echo $GITHUB_REF | cut -d / -f 3)
+      - name: Get the commit SHA
+        id: get_commit_sha
+        run: echo ::set-output name=COMMIT_SHA::$(git rev-parse --short "$GITHUB_SHA")
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v1.1.0
+        with:
+          path: assignments/01-Library_application/mysolution/notification
+          dockerfile: assignments/01-Library_application/mysolution/notification/Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: FilippoSavarese/notification
+          tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
+          build_args: |
+            TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
