@@ -4,4 +4,4 @@ auth:
   rootPassword: root
   username: root
   password: root
-  database: book_db
+  database: book
