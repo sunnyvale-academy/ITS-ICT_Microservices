@@ -6,11 +6,14 @@ services:
   customer-ms:
     build:
       context: ./customer
+      args:
+        MVN_ARGS: -DskipTests=true
     container_name: customer-ms
     ports:
       - "8102:8102"
     depends_on:
       - mongodb_db
+    
 
   mongodb_db:
     image: mongo:latest
@@ -30,6 +33,8 @@ services:
   order-ms:
     build:
       context: ./order
+      args:
+        MVN_ARGS: -DskipTests=true
     container_name: order-ms
     ports:
       - "8103:8103"
