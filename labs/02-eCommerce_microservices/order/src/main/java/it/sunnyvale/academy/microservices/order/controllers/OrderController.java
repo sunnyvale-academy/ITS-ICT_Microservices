@@ -35,7 +35,7 @@ public class OrderController {
     }
 
     // CREATE
-    @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.POST)
     public Order addNewOrder(@Valid @RequestBody Order order) {
         notificationClient.sendSMS(order);
         return orderRepository.save(order);
@@ -64,7 +64,7 @@ public class OrderController {
 
 
     // UPDATE
-    @RequestMapping(value = "/{orderId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{orderId}", method = RequestMethod.PUT)
     public Order modifyOrder(@RequestBody Order order, @RequestBody String orderId ) {
         return orderRepository.save(order);
     }

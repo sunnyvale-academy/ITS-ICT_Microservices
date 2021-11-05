@@ -28,7 +28,7 @@ public class CustomerController {
     }
 
     // CREATE
-    @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.POST)
     public Customer addNewCustomer(@Valid @RequestBody Customer customer) {
         return customerRepository.save(customer);
     }
@@ -53,7 +53,7 @@ public class CustomerController {
 
 
     // UPDATE
-    @RequestMapping(value = "/{customerId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{customerId}", method = RequestMethod.PUT)
     public Customer modifyCustomer(@RequestBody Customer customer, @RequestBody String customerId ) {
         return customerRepository.save(customer);
     }
