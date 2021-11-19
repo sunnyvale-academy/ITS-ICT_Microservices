@@ -1,0 +1,16 @@
+type Order {
+    orderId: String!
+    notifyToPhoneNr: String!
+}
+
+type CustomerOrders {
+	customerId: String!
+	customerName: String!
+	customerSurname: String!
+	orders: [Order!]!
+}
+
+type Query {
+    allCustomerOrders(customerId: String!, limit: Int): CustomerOrders!
+}
+
