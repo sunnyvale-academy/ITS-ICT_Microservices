@@ -5,7 +5,7 @@
 - You have **Docker** installed
 - You have a DockerHUB user
 - You have a Minikube cluster up and running with `kubectl` CLI already configured to access it
-- You setup all the infrastructure components as showed in lab [06 - Install infrastructure components on K8S](labs/06-Install_infrastructure_components_on_K8S/README.md)
+- You setup all the infrastructure components as showed in lab [06 - Install infrastructure components on K8S](../06-Install_infrastructure_components_on_K8S/README.md)
 
 ## Deploy Customser microservice
 
