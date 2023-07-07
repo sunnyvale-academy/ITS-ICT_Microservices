@@ -1,4 +1,4 @@
-FROM maven:3.6.3-jdk-8-openj9 as builder
+FROM --platform=linux/amd64 maven:3.6.3-openjdk-8 as builder
 ARG MVN_ARGS
 ADD ./src/ /app/src/
 ADD ./pom.xml /app/pom.xml
