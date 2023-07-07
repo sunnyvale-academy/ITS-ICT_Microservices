@@ -162,7 +162,7 @@ customer-mongodb-64df6b7549-4ms2r   1/1     Running   0          100s
 Install PostgreSQL standalone instance for Order microservice
 
 ```console
-$ helm install --values postgresql-values.yaml order-postgres bitnami/postgresql
+$ helm install --values postgresql-values.yaml order-postgres bitnami/postgresql --version 10.14.3
 NAME: order-postgres
 LAST DEPLOYED: Sun Jan  3 09:13:34 2021
 NAMESPACE: default

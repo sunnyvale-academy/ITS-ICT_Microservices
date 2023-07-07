@@ -1,5 +1,5 @@
 ---
-replicas: 2
+replicas: 3
 
 # Permit co-located instances for solitary minikube virtual machines.
 antiAffinity: "soft"
@@ -14,12 +14,12 @@ resources:
     memory: "512M"
   limits:
     cpu: "1000m"
-    memory: "512M"
+    memory: "1024M"
 
 # Request smaller persistent volumes.
 volumeClaimTemplate:
   accessModes: [ "ReadWriteOnce" ]
-  storageClassName: "hostpath"
+  # storageClassName: "standard"
   resources:
     requests:
       storage: 100M
