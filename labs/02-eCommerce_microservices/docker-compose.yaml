@@ -8,6 +8,10 @@ services:
       context: ./customer
       # args:
         # MVN_ARGS: -DskipTests=true
+      extra_hosts:
+        - "customer-mongodb:127.0.0.1"
+        - "order-postgres:127.0.0.1"
+        - "kafka:127.0.0.1"
     container_name: customer-ms
     ports:
       - "8102:8102"
@@ -35,6 +39,10 @@ services:
       context: ./order
       # args:
           # MVN_ARGS: -DskipTests=true
+      extra_hosts:
+        - "customer-mongodb:127.0.0.1"
+        - "order-postgres:127.0.0.1"
+        - "kafka:127.0.0.1"
     container_name: order-ms
     ports:
       - "8103:8103"
@@ -61,6 +69,10 @@ services:
   notification-ms:
     build:
       context: ./notification
+      extra_hosts:
+        - "customer-mongodb:127.0.0.1"
+        - "order-postgres:127.0.0.1"
+        - "kafka:127.0.0.1"
     container_name: notification-ms
     ports:
       - "8104:8104"
