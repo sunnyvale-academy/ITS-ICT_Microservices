@@ -38,10 +38,7 @@ jobs:
         tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
         build_args: |
           TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
-        add-hosts:
-          - customer-mongodb:127.0.0.1
-          - order-postgres:127.0.0.1
-          - kafka:127.0.0.1
+        add-hosts: customer-mongodb:127.0.0.1,order-postgres:127.0.0.1,kafka:127.0.0.1
   
   build-order:
     runs-on: ubuntu-latest
