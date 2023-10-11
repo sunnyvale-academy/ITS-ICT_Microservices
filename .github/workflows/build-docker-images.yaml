@@ -35,14 +35,16 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v4.2.1
       with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
         context: labs/02-eCommerce_microservices/customer/
         file: labs/02-eCommerce_microservices/customer/Dockerfile
         tags: ${{ secrets.DOCKER_USERNAME }}/customer:${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
         build-args: |
-          TAG=${{ secrets.DOCKER_USERNAME }}/customer:${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
+          TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
         add-hosts: customer-mongodb:127.0.0.1,order-postgres:127.0.0.1,kafka:127.0.0.1
         push: true
-
+        
   build-order:
     runs-on: ubuntu-latest
     defaults:
