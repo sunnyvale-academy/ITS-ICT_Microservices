@@ -6,7 +6,7 @@
 - On the host, to have mapped localhost and kafka to 127.0.0.1, for example
 
 ```bash
-echo "127.0.0.1 kafka localhost" >> /etc/hosts)
+$ echo "127.0.0.1 kafka localhost" | sudo tee -a /etc/hosts)
 ``````
 
 Install dependencies
