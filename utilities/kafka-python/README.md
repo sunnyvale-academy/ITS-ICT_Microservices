@@ -27,4 +27,8 @@ Produce messages
 $ python kafka-producer.py --config_file producer.conf
 ```
 
+In the case you want to consume from the beginning of the topic/partition
 
+```console
+$ python kafka-consumer.py --config_file consumer.conf --reset
+```
