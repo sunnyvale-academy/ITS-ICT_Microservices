@@ -95,9 +95,17 @@ services:
       - zookeeper
     ports:
       - "9092:9092"
+      # The following port has ben added to let both internal (containers) and external (host) client to connect
+      # refer to https://github.com/bitnami/containers/tree/main/bitnami/kafka#accessing-apache-kafka-with-internal-and-external-clients
+      - "9094:9094"
     environment:
       KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
       ALLOW_PLAINTEXT_LISTENER: "yes"
+      # The following section has ben added to let both internal (containers) and external (host) client to connect
+      # refer to https://github.com/bitnami/containers/tree/main/bitnami/kafka#accessing-apache-kafka-with-internal-and-external-clients
+      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094
+      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,EXTERNAL://localhost:9094
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT
 
   
 
