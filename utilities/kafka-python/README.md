@@ -3,7 +3,11 @@
 ## Prerequisites
 
 - To have started Kafka using Docker Compose as showed in the lab [02-eCommerce_microservices](../../labs/02-eCommerce_microservices/README.md)
-- On the host, to have mapped localhost and kafka to 127.0.0.1, i.e.: echo "127.0.0.1 kafka localhost" >> /etc/hosts)
+- On the host, to have mapped localhost and kafka to 127.0.0.1, for example
+
+```bash
+echo "127.0.0.1 kafka localhost" >> /etc/hosts)
+``````
 
 Install dependencies
 
