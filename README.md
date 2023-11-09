@@ -29,7 +29,11 @@
 - [01 - Library application](assignments/01-Library_application/README.md)
 
 
-
 ## Appendinces
 
-[A - Sync a local copy of forked repo](appendices/A-Sync_copy_of_forked_repo/README.md)
+- [A - Sync a local copy of forked repo](appendices/A-Sync_copy_of_forked_repo/README.md)
+
+## Utilities
+
+- [Kafka using Python](utilities/kafka-python/README.md)
+- [RabbitMQ using Python](utilities/rabbitmq-python/README.md)
