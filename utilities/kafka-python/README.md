@@ -1,4 +1,4 @@
-# Produce and consumer messages to/from Kafka
+# Produce and consumer messages to/from Kafka using Python
 
 ## Prerequisites
 
@@ -8,6 +8,8 @@
 ```bash
 $ echo "127.0.0.1 kafka localhost" | sudo tee -a /etc/hosts)
 ```
+
+## Run the lab
 
 Install dependencies
 
