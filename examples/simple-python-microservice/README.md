@@ -12,3 +12,11 @@ podman login
 podman push docker.io/dennydgl1/microservices-web
 kubectl apply -f k8s/
 ```
+
+Query microservice
+
+```console
+curl localhost:8000/customers/1
+```
+
+Access Swagger UI by pointing your broswer on http://localhost:8000/docs
