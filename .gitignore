@@ -6,3 +6,4 @@
 **/.idea
 **/istio-*
 **/*.class
+**/.venv

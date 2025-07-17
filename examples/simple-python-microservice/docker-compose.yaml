@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  web:
+    build: ./
+    container_name: microservice_app
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mydb
+    environment:
+      - DATABASE_URL=postgresql://microservice:microservice@mydb/postgres
+
+  mydb:
+    image: postgres:17.5-alpine3.22
+    container_name: microservice_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: postgres
+    #ports:
+    #  - "5432:5432"
+    volumes:
+      - db_vol:/var/lib/postgresql/data
+      - ./initdb.sh:/docker-entrypoint-initdb.d/initdb.sh:ro
+
+volumes:
+  db_vol:
